@@ -1,3 +1,3 @@
-import FunnelInformation from "./FunnelInformation";
+import FunnelForm from "./FunnelForm";
 
-export { FunnelInformation }
+export { FunnelForm }
