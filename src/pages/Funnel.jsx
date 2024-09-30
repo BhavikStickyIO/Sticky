@@ -1,10 +1,11 @@
 import React from 'react'
-import {FunnelInformation} from '../components/funnel'
+import {FunnelForm} from '../components/funnel'
 
 const Funnel = () => {
   return (
     <div>
-      <FunnelInformation />
+      <FunnelForm />
+      {/* <FunnelForm /> */}
     </div>
   )
 }

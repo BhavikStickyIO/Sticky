@@ -1,7 +1,7 @@
 import React from 'react';
-import { Card, CardContent, CardHeader, Box } from '@mui/material';
-
-const CustomCard = ({ title, children }) => {
+import { Card, CardContent, CardHeader, Box, Typography } from '@mui/material';
+import CardSectionHeader from './CardSectionHeader'
+const CustomCard = ({ title, children, subTitle = "General Information" }) => {
   return (
     <Card
       sx={{
@@ -12,16 +12,8 @@ const CustomCard = ({ title, children }) => {
         padding: 2,
       }}
     >
-      {title && (
-        <CardHeader
-          title={title}
-          sx={{
-            textAlign: 'center',
-            fontSize: '1.5rem',
-          }}
-        />
-      )}
-      <CardContent>
+      <CardSectionHeader title={title} subTitle={subTitle} marginLeft='1.2rem' />
+      <CardContent> 
         <Box>{children}</Box>
       </CardContent>
     </Card>
