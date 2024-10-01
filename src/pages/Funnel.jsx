@@ -5,7 +5,6 @@ const Funnel = () => {
   return (
     <div>
       <FunnelForm />
-      {/* <FunnelForm /> */}
     </div>
   )
 }

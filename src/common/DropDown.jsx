@@ -1,11 +1,10 @@
 import React from 'react'
 import { TextField, Button, FormControl, Box, Typography } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 
-const DropDown = ({ DropDownName }) => {
+const DropDown = ({ DropDownName,options = [] }) => {
   const [age, setAge] = React.useState('');
   const handleChange = (event) => {
     setAge(event.target.value);
@@ -23,9 +22,16 @@ const DropDown = ({ DropDownName }) => {
           onChange={handleChange}
           sx={{ textAlign: 'start' }}
         >
-          <MenuItem value={10}>Ten</MenuItem>
+          {/* <MenuItem value={10}>Ten</MenuItem>
           <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          <MenuItem value={30}>Thirty</MenuItem> */}
+
+          
+          {options.length > 0 && options.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
         </Select>
       </FormControl>
     </div>

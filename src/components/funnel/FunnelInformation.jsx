@@ -72,7 +72,7 @@ const FunnelInformation = () => {
         <InputField label="Name" />
         <InputField label="Description" rows={4} defaultValue="Description"/>
         <DropDown DropDownName="Default Channel" />
-        <DropDown DropDownName="Expense Assumption Profile" />
+        <DropDown DropDownName="Expense Assumption Profile"/>
         <InputField label="Daily Subscription Limit" />
         <DropDown DropDownName="Max Grace Period" />
         <Divider sx={{ margin: '20px' }} />
@@ -82,7 +82,6 @@ const FunnelInformation = () => {
         <InputField label="Shopify Store URL" />
         <InputField label="Store Name" />
         <InputField label="Shopify API Token" />
-
       </CustomCard>
     </>
 

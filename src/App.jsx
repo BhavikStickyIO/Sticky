@@ -1,5 +1,4 @@
 import React from 'react'
-import './App.css'
 import Funnel from './pages/Funnel'
 import Layout from './layout/Layout'
 
