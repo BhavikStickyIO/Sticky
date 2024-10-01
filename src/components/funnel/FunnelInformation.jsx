@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
-import { TextField, Button, FormControl, Box, Typography } from '@mui/material';
-import { CustomCard, CardSectionHeader, InputField } from '../../common';
-import { useTheme } from '@mui/material/styles';
+import React from "react";
+import {
+  CustomCard,
+  CardSectionHeader,
+  InputField,
+  DropDown,
+  SwitchToggle,
+} from "../../common";
+import Typography from "@mui/material/Typography";
+import { useTheme } from "@mui/material/styles";
+import Divider from "@mui/material/Divider";
+import { Box } from "@mui/material";
+// import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 
-import DropDown from '../../common/DropDown';
-import Divider from '@mui/material/Divider';
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -15,77 +22,79 @@ const MenuProps = {
     },
   },
 };
-//Dropdown
-const names = [
-  'Oliver Hansen',
-  'Van Henry',
-  'April Tucker',
-  'Ralph Hubbard',
-  'Omar Alexander',
-  'Carlos Abbott',
-  'Miriam Wagner',
-  'Bradley Wilkerson',
-  'Virginia Andrews',
-  'Kelly Snyder',
-];
-
-
 
 const FunnelInformation = () => {
-  const [name, setName] = React.useState('');
   const theme = useTheme();
-  const [personName, setPersonName] = React.useState([names[0]]);
-
-  // const handleChange = (event) => {
-  //   const {
-  //     target: { value },
-  //   } = event;
-  //   console.log("Event", event.target)
-  //   setPersonName(
-  //     // On autofill we get a stringified value.
-  //     value
-  //   );
-  // };
-  const [formData, setFormData] = useState({
-    funnelName: '',
-    funnelDescription: '',
-  });
-
   const handleChange = (event) => {
     setAge(event.target.value);
   };
 
-
-  // const handleChange = (e) => {
-  //   setFormData({
-  //     ...formData,
-  //     [e.target.name]: e.target.value,
-  //   });
-  // };
-  const [age, setAge] = React.useState('');
-
-
+  const [age, setAge] = React.useState("");
 
   return (
     <>
-      <CustomCard title="Funnel Information">
+      <CustomCard title="Funnel Information" subTitle="General Information">
         <InputField label="Name" />
-        <InputField label="Description" rows={4} defaultValue="Description"/>
-        <DropDown DropDownName="Default Channel" />
-        <DropDown DropDownName="Expense Assumption Profile" />
+        <InputField label="Description" rows={4} />
+        <DropDown label="Default Channel" />
+        <DropDown label="Expense Assumption Profile" />
         <InputField label="Daily Subscription Limit" />
-        <DropDown DropDownName="Max Grace Period" />
-        <Divider sx={{ margin: '20px' }} />
-        <CardSectionHeader subTitle="Shopify Configuration"  />
-        <DropDown DropDownName="Sticky Checkout Domain" />
-        <DropDown DropDownName="Traffic Source" />
+        <DropDown label="Max Grace Period" />
+        <Divider sx={{ margin: "20px" }} />
+        <CardSectionHeader subTitle="Shopify Configuration" />
+        <DropDown label="Sticky Checkout Domain" />
+        <DropDown label="Traffic Source" />
         <InputField label="Shopify Store URL" />
         <InputField label="Store Name" />
         <InputField label="Shopify API Token" />
 
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            mt: 4,
+          }}
+        >
+          <Typography sx={{ color: "#1B3E6F", m: 1, fontSize: "14px" }}>
+            Sync Shopify Products
+          </Typography>
+          <SwitchToggle />
+        </Box>
+        <Typography sx={{ color: "#1B3E6F", mr: 13, fontSize: "14px", mt: 5 }}>
+          Please add the following code to your Shopify footer.liquid file.
+        </Typography>
+
+        <Box
+          sx={{
+            backgroundColor: "#E3E7ED",
+            display: "flex",
+            justifyContent: "space-around",
+            height: "80px",
+            alignItems: "center",
+            mt: 2,
+          }}
+        >
+          <Typography sx={{ color: "#1B3E6F" }}>
+            Qnsdfjh623ZetUvwXYDfR45
+          </Typography>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              color: "rgb(0, 164, 224)",
+              cursor: "pointer",
+            }}
+          >
+            {/* <ContentCopyIcon /> */}
+            <Typography>Copy</Typography>
+          </Box>
+        </Box>
+        <Divider sx={{ margin: "20px" }} />
+        <CardSectionHeader subTitle="Offer Configuration" />
+        <DropDown label="Select Offer" />
       </CustomCard>
     </>
-
   );
 };
 

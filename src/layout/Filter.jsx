@@ -1,6 +1,13 @@
-import { Box, Card, Checkbox, FormControlLabel, FormGroup, Typography } from '@mui/material'
-import React, { useState } from 'react'
-import {CONFIGURATIONS,OPTIONS } from '../constant/filter'
+import {
+  Box,
+  Card,
+  Checkbox,
+  FormControlLabel,
+  FormGroup,
+  Typography,
+} from "@mui/material";
+import React, { useState } from "react";
+import { CONFIGURATIONS, OPTIONS } from "../constant/filter";
 
 const Filter = () => {
   const [configChecks, setConfigChecks] = useState(
@@ -24,16 +31,17 @@ const Filter = () => {
     });
   };
   return (
-    <Card  
-    sx={{
-      padding: 2,      
-      width: '300px',  
-      top:30,
-      height: '90vh',
-      position:'sticky',
-      marginLeft:"60px",
-      backgroundColor:'#EAEBED'
-    }}>
+    <Card
+      sx={{
+        padding: 2,
+        width: "300px",
+        top: 70,
+        height: "86vh",
+        position: "sticky",
+        marginLeft: "60px",
+        backgroundColor: "#EAEBED",
+      }}
+    >
       <Typography variant="h6" sx={{ mb: 2 }}>
         Configurations
       </Typography>
@@ -52,8 +60,8 @@ const Filter = () => {
           />
         ))}
       </FormGroup>
-  
-      <Typography variant="h6" sx={{ mt: 4, mb: 2 }}>
+
+      <Typography variant="h6" sx={{ mt: 2, mb: 2 }}>
         Options
       </Typography>
       <FormGroup>
@@ -71,10 +79,8 @@ const Filter = () => {
           />
         ))}
       </FormGroup>
-  </Card>
-  
-  
-  )
-}
+    </Card>
+  );
+};
 
-export default Filter
+export default Filter;
