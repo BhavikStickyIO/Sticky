@@ -1,27 +1,28 @@
-import React, { useState } from 'react';
-import { CustomCard } from '../../common';
-import { Select, MenuItem, Chip, FormControl, InputLabel } from '@mui/material';
+import React, { useState } from "react";
+import { CustomCard } from "../../common";
+// import { Select, MenuItem, Chip, FormControl, InputLabel } from "@mui/material";
+import SecondaryDropdown from "../../common/SecondaryDropdown";
 
 const ShippingInformation = () => {
-  const [shippingMethod, setShippingMethod] = useState('');
+  // const [shippingMethod, setShippingMethod] = useState('');
 
-  const shippingOptions = [
-    { value: 'free', label: 'Free Delivery' },
-    { value: 'express', label: 'Express Delivery' },
-    { value: 'standard', label: 'Standard Delivery' },
-  ];
+  // const shippingOptions = [
+  //   { value: 'free', label: 'Free Delivery' },
+  //   { value: 'express', label: 'Express Delivery' },
+  //   { value: 'standard', label: 'Standard Delivery' },
+  // ];
 
-  const handleChange = (event) => {
-    setShippingMethod(event.target.value);
-  };
+  // const handleChange = (event) => {
+  //   setShippingMethod(event.target.value);
+  // };
 
-  const handleClear = () => {
-    setShippingMethod('');
-  };
+  // const handleClear = () => {
+  //   setShippingMethod('');
+  // };
 
   return (
     <CustomCard title="Shipping">
-      <FormControl fullWidth variant="outlined" margin="normal">
+      {/* <FormControl fullWidth variant="outlined" margin="normal">
         <InputLabel>Pick Shipping Methods</InputLabel>
         <Select
           value={shippingMethod}
@@ -34,9 +35,9 @@ const ShippingInformation = () => {
             </MenuItem>
           ))}
         </Select>
-      </FormControl>
+      </FormControl> */}
 
-      {shippingMethod && (
+      {/* {shippingMethod && (
         <div style={{ marginTop: '10px' }}>
           <Chip
             label={
@@ -48,9 +49,10 @@ const ShippingInformation = () => {
             style={{ backgroundColor: '#E0F7FA', borderRadius: '0px', marginRight: '50px' }}
           />
         </div>
-      )}
+      )} */}
+      <SecondaryDropdown label="Shipping Methods"/>
     </CustomCard>
   );
-}
+};
 
 export default ShippingInformation;
