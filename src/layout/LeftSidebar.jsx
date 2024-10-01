@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Card, Tabs, Tab } from '@mui/material';
+import { useFunnelContext } from '../context/funnelContext';
 
 const LeftSidebar = () => {
-  const [value, setValue] = useState(0);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+ const {value, setValue} = useFunnelContext()
+ const handleChange = (event, newValue) => {
+  setValue(newValue);
+};
 
   return (
     <Card

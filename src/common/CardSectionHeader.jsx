@@ -9,7 +9,8 @@ const CardSectionHeader = ({ title, subTitle, marginLeft="0rem" }) => {
                     title={title}
                     sx={{
                         textAlign: 'start',
-                        color: '#1B3E6F',
+                        color: 'rgba(27, 1, 111, 1)',
+                        fontWeight: 'bold' 
                     }}
                 />
             )}

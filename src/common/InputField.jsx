@@ -1,7 +1,7 @@
 import React from 'react'
 import { TextField, Button, FormControl, Box, Typography } from '@mui/material';
 
-const InputField = ({ label, rows, defaultValue, multiline }) => {
+const InputField = ({ label, rows }) => {
     const [name, setName] = React.useState('');
     return (
         <div>
@@ -18,7 +18,6 @@ const InputField = ({ label, rows, defaultValue, multiline }) => {
                     value={name}
                     rows={rows}
                     multiline
-                    defaultValue={defaultValue}
                     onChange={(event) => {
                         setName(event.target.value);
                     }}
