@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 import FunnelInformation from './FunnelInformation'
 import ShippingInformation from '../shipping/ShipingInformation'
 import ThirdpartyInformation from '../thirdpartyprovider/ThirdpartyInformation'
@@ -8,11 +8,10 @@ import { useFunnelContext } from '../../context/funnelContext'
 
 const FunnelForm = () => {
     const { value } = useFunnelContext();
-
     const shippingInfoRef = useRef();
 
     useEffect(() => {
-        if (value === 0) {
+        if (value.sliderFunnel === 0) {
             window.scrollTo({ top: 0, behavior: "smooth" });
         } else {
             const offset = 20; // Change this value to adjust the space between the two forms
@@ -22,7 +21,7 @@ const FunnelForm = () => {
                 offset;
             window.scrollTo({ top, behavior: "smooth" });
         }
-    }, [value]);
+    }, [value.sliderFunnel]);
 
     return (
         <>
@@ -30,9 +29,13 @@ const FunnelForm = () => {
             <div ref={shippingInfoRef}>
                 <ShippingInformation />
             </div>
-            <ThirdpartyInformation />
-            <BinblockingInformation />
-            {/* <PostbackProfileInformation/> */}
+            {value && value?.checkBoxFunnel?.third_Party_Providers &&
+                <ThirdpartyInformation />
+            }
+                {value && value?.checkBoxFunnel?.bIN_Blocking &&
+                <BinblockingInformation />
+            }
+            <PostbackProfileInformation />
         </>
     )
 }

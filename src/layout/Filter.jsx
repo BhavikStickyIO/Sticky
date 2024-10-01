@@ -6,16 +6,16 @@ import {
   FormGroup,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CONFIGURATIONS, OPTIONS } from "../constant/filter";
+import { useFunnelContext } from "../context/funnelContext";
 
 const Filter = () => {
+  const { value, setValue } = useFunnelContext()
   const [configChecks, setConfigChecks] = useState(
     CONFIGURATIONS.reduce((acc, config) => ({ ...acc, [config]: true }), {})
   );
-  const [optionChecks, setOptionChecks] = useState(
-    OPTIONS.reduce((acc, option) => ({ ...acc, [option]: true }), {})
-  );
+  const [optionChecks, setOptionChecks] = useState({});
 
   const handleConfigChange = (event) => {
     setConfigChecks({
@@ -30,13 +30,24 @@ const Filter = () => {
       [event.target.name]: event.target.checked,
     });
   };
+
+  useEffect(() => {
+    setValue((prev) => ({
+      ...prev,
+      checkBoxFunnel: {
+        ...prev.checkBoxFunnel,
+        ...optionChecks
+      }
+    }))
+  }, [optionChecks])
+
   return (
     <Card
       sx={{
         padding: 2,
         width: "300px",
         top: 70,
-        height: "86vh",
+        height: "83vh",
         position: "sticky",
         marginLeft: "60px",
         backgroundColor: "#EAEBED",
@@ -50,7 +61,9 @@ const Filter = () => {
           <FormControlLabel
             key={config}
             control={
+
               <Checkbox
+                sx={{ color: '#40B4E2' }}
                 checked={configChecks[config]}
                 onChange={handleConfigChange}
                 name={config}
@@ -61,21 +74,21 @@ const Filter = () => {
         ))}
       </FormGroup>
 
-      <Typography variant="h6" sx={{ mt: 2, mb: 2 }}>
+      <Typography variant="h6" sx={{ mt: 2 }}>
         Options
       </Typography>
       <FormGroup>
         {OPTIONS.map((option) => (
           <FormControlLabel
-            key={option}
+            key={option.name}
             control={
               <Checkbox
-                checked={optionChecks[option]}
+                checked={optionChecks[option.name]}
                 onChange={handleOptionChange}
-                name={option}
+                name={option.name}
               />
             }
-            label={option}
+            label={option.label}
           />
         ))}
       </FormGroup>
