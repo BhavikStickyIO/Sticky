@@ -1,5 +1,6 @@
 import React from 'react'
 import {FunnelForm} from '../components/funnel'
+import { PaymentForm } from '../components/payments'
 
 const Funnel = () => {
   return (

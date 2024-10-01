@@ -10,7 +10,7 @@ import Typography from "@mui/material/Typography";
 import { useTheme } from "@mui/material/styles";
 import Divider from "@mui/material/Divider";
 import { Box } from "@mui/material";
-// import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -86,7 +86,7 @@ const FunnelInformation = () => {
               cursor: "pointer",
             }}
           >
-            {/* <ContentCopyIcon /> */}
+            <ContentCopyIcon />
             <Typography>Copy</Typography>
           </Box>
         </Box>
