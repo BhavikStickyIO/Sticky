@@ -3,68 +3,68 @@ import { CustomCard, DropDown } from '../../common';
 
 const dropDownData = [
     {
-        DropDownName: 'Fulfillment',
+        label: 'Fulfillment',
         options: [
             { label: 'At Cost Fulfillment', value: 'At Cost Fulfillment' },
 
         ],
     },
     {
-        DropDownName: 'Risk Mitigation',
+        label: 'Risk Mitigation',
         options: [
             { label: 'Kount Provider 4249', value: 'Kount Provider_4249' },
         ],
     },
     {
-        DropDownName: 'Prospect',
+        label: 'Prospect',
         options: [
             { label: 'Tris Sprinkless', value: 'Tris Sprinkless' },
         ],
     },
     {
-        DropDownName: 'Order Confirmation',
+        label: 'Order Confirmation',
         options: [
             { label: 'Justin Test', value: 'Justin Test' },
         ],
     },
     {
-        DropDownName: 'Chargeback',
+        label: 'Chargeback',
         options: [
             { label: 'MM Kount 2', value: 'MM Kount 2' },
         ],
     },
     {
-        DropDownName: 'Auto Responder',
+        label: 'Auto Responder',
         options: [
             { label: 'Justin Test', value: 'Justin Test' },
         ],
     },
     {
-        DropDownName: 'Tax',
+        label: 'Tax',
         options: [
             { label: 'MM Kount 2', value: 'MM Kount 2' },
         ],
     },
     {
-        DropDownName: 'Data Verification',
+        label: 'Data Verification',
         options: [
             { label: 'Test insureship product ID', value: 'Test insureship product ID' },
         ],
     },
     {
-        DropDownName: 'Collection',
+        label: 'Collection',
         options: [
             { label: 'Test insureship product ID', value: 'Test insureship product ID' },
         ],
     },
     {
-        DropDownName: 'Account Updater',
+        label: 'Account Updater',
         options: [
             { label: 'Test insureship product ID', value: 'Test insureship product ID' },
         ],
     },
     {
-        DropDownName: 'Loyalty',
+        label: 'Loyalty',
         options: [
             { label: 'Test insureship product ID', value: 'Test insureship product ID' },
         ],
@@ -77,8 +77,8 @@ const ThirdpartyInformation = () => {
             <CustomCard title="Third-Party Providers">
                 {dropDownData.map((dropDown) => (
                     <DropDown
-                        key={dropDown.DropDownName}
-                        DropDownName={dropDown.DropDownName}
+                        key={dropDown.label}
+                        label={dropDown.label}
                         options={dropDown.options}
                     />
                 ))}

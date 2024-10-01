@@ -1,10 +1,10 @@
 import React from 'react'
-import { TextField, Button, FormControl, Box, Typography } from '@mui/material';
+import { FormControl } from '@mui/material';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 
-const DropDown = ({ DropDownName,options = [] }) => {
+const DropDown = ({ label, options = [] }) => {
   const [age, setAge] = React.useState('');
   const handleChange = (event) => {
     setAge(event.target.value);
@@ -13,12 +13,12 @@ const DropDown = ({ DropDownName,options = [] }) => {
   return (
     <div>
       <FormControl sx={{ m: 1, width: 500, marginTop: '15px' }}>
-        <InputLabel id="demo-simple-select-label">{DropDownName}</InputLabel>
+        <InputLabel id="demo-simple-select-label">{label}</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={age}
-          label={DropDownName}
+          label={label}
           onChange={handleChange}
           sx={{ textAlign: 'start' }}
         >

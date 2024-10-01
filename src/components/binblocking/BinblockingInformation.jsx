@@ -9,7 +9,7 @@ const BinBlockingInformation = () => {
   return (
     <CustomCard title="BIN Blocking">
       {binProfileOptions.map((option, index) => (
-        <DropDown key={index} DropDownName={option.label} options={[option]} />
+        <DropDown key={index} label={option.label} options={[option]} />
       ))}
     </CustomCard>
   );
