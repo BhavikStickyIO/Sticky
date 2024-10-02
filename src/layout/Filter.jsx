@@ -7,7 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { CONFIGURATIONS, OPTIONS } from "../constant/filter";
+import { CONFIGURATIONS, OPTIONS } from "../constant/funnel";
 import { useFunnelContext } from "../context/FunnelContext";
 
 const Filter = () => {

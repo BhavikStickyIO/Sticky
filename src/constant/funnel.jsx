@@ -6,13 +6,34 @@ export const CONFIGURATIONS = [
 ];
 
 export const OPTIONS = [
-  "Third Party Providers",
-  "Block Pre-Paid Cards",
-  "BIN Blocking",
-  "Allow Custom Pricing",
-  "Daily Subscription Limit",
-  "Collections",
-  "Others",
+  {
+    name: "third_Party_Providers",
+    label: "Third Party Providers",
+  },
+  {
+    name: "block_Pre_Paid_Cards",
+    label: "Block Pre-Paid Cards",
+  },
+  {
+    name: "bIN_Blocking",
+    label: "BIN Blocking",
+  },
+  {
+    name: "allow_Custom_Pricing",
+    label: "Allow Custom Pricing",
+  },
+  {
+    name: "daily_Subscription_Limit",
+    label: "Daily Subscription Limit",
+  },
+  {
+    name: "collections",
+    label: "Collections",
+  },
+  {
+    name: "others",
+    label: "Others",
+  },
 ];
 
 export const GENERAL_INFORMATION = {
@@ -32,4 +53,12 @@ export const SHOPIFY_CONFIG = {
 
 export const OFFER_CONFIG = {
   select_offer: [],
+};
+
+export const SHIPPING_INFORMATION = {
+  shipping_methods: [
+    { label: "Free Delivery", value: "free" },
+    { label: "Express Delivery", value: "express" },
+    { label: "Standard Delivery", value: "standard" },
+  ],
 };

@@ -1,16 +1,20 @@
 import React from "react";
 import { CustomCard, DropDown } from "../../common";
-
-const shippingOptions = [
-  { value: "free", label: "Free Delivery" },
-  { value: "express", label: "Express Delivery" },
-  { value: "standard", label: "Standard Delivery" },
-];
+import { SHIPPING_INFORMATION } from "../../constant/funnel";
+import { useFunnelContext } from "../../context/FunnelContext";
 
 const ShippingInformation = () => {
+  const { handlePrimaryDropdown, dropdownValues } = useFunnelContext();
   return (
     <CustomCard title="Shipping">
-      <DropDown label="Shipping Methods" options={shippingOptions}  />
+      <DropDown
+      isChipShow={true}
+        label="Shipping Methods"
+        handleChange={handlePrimaryDropdown}
+        value={dropdownValues.shipping_methods}
+        name="shipping_methods"
+        options={SHIPPING_INFORMATION.shipping_methods}
+      />
     </CustomCard>
   );
 };
