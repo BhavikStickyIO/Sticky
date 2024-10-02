@@ -1,19 +1,24 @@
-import React from 'react'
-import { CustomCard, DropDown } from '../../common';
+import React from "react";
+import { CustomCard, DropDown } from "../../common";
+import { POST_BACK_PROFILES } from "../../constant/funnel";
+import { useFunnelContext } from "../../context/FunnelContext";
 
 const PostbackProfileInformation = () => {
-  const postbackprofileOptions = [
-    { label: "Choose Profile...", value: "Choose Profile" },
-  ];
+  const { handlePrimaryDropdown, dropdownValues } = useFunnelContext();
+
   return (
     <div>
       <CustomCard title="Post-Back Profiles">
-      {postbackprofileOptions.map((option, index) => (
-        <DropDown key={index} label={option.label} options={[option]} />
-      ))}
-    </CustomCard>
+        <DropDown
+          name="choose_profile"
+          options={POST_BACK_PROFILES.choose_profile}
+          label="Sticky Checkout Domain"
+          value={dropdownValues?.choose_profile}
+          handleChange={handlePrimaryDropdown}
+        />
+      </CustomCard>
     </div>
-  )
-}
+  );
+};
 
-export default PostbackProfileInformation
+export default PostbackProfileInformation;
