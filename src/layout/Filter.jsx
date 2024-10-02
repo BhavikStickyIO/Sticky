@@ -7,7 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
-import { CONFIGURATIONS, OPTIONS } from "../constant/filter";
+import { CONFIGURATIONS, OPTIONS } from "../constant/funnel";
 
 const Filter = () => {
   const [configChecks, setConfigChecks] = useState(

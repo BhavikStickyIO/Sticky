@@ -6,7 +6,6 @@ const dropDownData = [
         label: 'Fulfillment',
         options: [
             { label: 'At Cost Fulfillment', value: 'At Cost Fulfillment' },
-
         ],
     },
     {

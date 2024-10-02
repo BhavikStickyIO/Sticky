@@ -10,6 +10,7 @@ const DropDown = ({ label, options = [] }) => {
     setAge(event.target.value);
   };
 
+
   return (
     <div>
       <FormControl sx={{ m: 1, width: 500, marginTop: '15px' }}>

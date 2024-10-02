@@ -9,7 +9,6 @@ import PaymentInformation from "../payments/PaymentInformation";
 
 const FunnelForm = () => {
   const { value } = useFunnelContext();
-console.log("VaL",value)
   const shippingInfoRef = useRef();
 
   useEffect(() => {
