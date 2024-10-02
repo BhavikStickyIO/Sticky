@@ -11,11 +11,10 @@ const SecondaryDropdown = ({
   const [selectedOption, setSelectedOptions] = useState([]);
   console.log(selectedOption, "selectedOptuon");
 
-  
 
   const handleChange = (event) => {
     setSelectedOptions(event.target.value);
-    setSelectedOptions([value]); // Single select stores as array with one value
+    setSelectedOptions([value]); 
   };
 
   const handleClear = (optionToDelete) => {
@@ -24,9 +23,9 @@ const SecondaryDropdown = ({
     );
   };
 
-  // Determine options based on the type (shipping or payment)
   const currentOptions = isShipping ? shippingOptions : options;
 
+  
   return (
     <div>
       <FormControl fullWidth variant="outlined" margin="normal">
@@ -37,7 +36,6 @@ const SecondaryDropdown = ({
           onChange={handleChange}
           label={label}
         >
-          {/* Conditionally rendering shipping or payment options */}
           {isShipping &&
             shippingOptions.map((option) => (
               <MenuItem key={option.value} value={option.value}>
@@ -58,11 +56,11 @@ const SecondaryDropdown = ({
           {selectedOption?.map((chipTitle) => (
             <Chip
               label={chipTitle}
-              onDelete={() => {}}
+              onDelete={() => handleClear(chipTitle)}
               sx={{
                 backgroundColor: "#E0F7FA",
                 borderRadius: "0px",
-                marginRight: "50px",
+                marginRight: "10px",
               }}
             />
           ))}

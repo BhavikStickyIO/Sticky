@@ -14,7 +14,7 @@ export const FunnelProvider = ({ children }) => {
       post_back_url: false,
       include_returns: false,
       coupons: false,
-      third_party_providers: false,
+      third_Party_Providers: false,
       block_pre_paid_cards: false,
       bin_blocking: false,
       allow_custom_pricing: false,
@@ -24,6 +24,8 @@ export const FunnelProvider = ({ children }) => {
     },
     sliderFunnel: 0,
   });
+  console.log(value,"value27")
+
 
   const [dropdownValues, setDropdownValues] = useState({
     default_channel: "",

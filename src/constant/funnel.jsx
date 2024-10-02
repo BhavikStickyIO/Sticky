@@ -57,8 +57,8 @@ export const OFFER_CONFIG = {
 
 export const SHIPPING_INFORMATION = {
   shipping_methods: [
-    { label: "Free Delivery", value: "free" },
-    { label: "Express Delivery", value: "express" },
-    { label: "Standard Delivery", value: "standard" },
+    { label: "Free Delivery", value: "Free Delivery" },
+    { label: "Express Delivery", value: "Express Delivery" },
+    { label: "Standard Delivery", value: "Standard Delivery" },
   ],
 };
