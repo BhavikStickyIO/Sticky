@@ -4,9 +4,10 @@ import ShippingInformation from '../shipping/ShipingInformation'
 import ThirdpartyInformation from '../thirdpartyprovider/ThirdpartyInformation'
 import BinblockingInformation from '../binblocking/BinblockingInformation'
 import PostbackProfileInformation from '../postbackprofile/PostbackProfileInformation'
-import { useFunnelContext } from '../../context/funnelContext'
+import { useFunnelContext } from '../../context/FunnelContext'
+import { Box } from '@mui/material'
 
-const FunnelForm = () => {
+export const FunnelForm = () => {
     const { value } = useFunnelContext();
     const shippingInfoRef = useRef();
 
@@ -24,7 +25,7 @@ const FunnelForm = () => {
     }, [value.sliderFunnel]);
 
     return (
-        <>
+        <Box sx={{display: 'flex', flexDirection: 'column', gap: 3.7}}>
             <FunnelInformation />
             <div ref={shippingInfoRef}>
                 <ShippingInformation />
@@ -36,8 +37,6 @@ const FunnelForm = () => {
                 <BinblockingInformation />
             }
             <PostbackProfileInformation />
-        </>
+        </Box>
     )
 }
-
-export default FunnelForm;

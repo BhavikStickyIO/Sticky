@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { CONFIGURATIONS, OPTIONS } from "../constant/filter";
-import { useFunnelContext } from "../context/funnelContext";
+import { useFunnelContext } from "../context/FunnelContext";
 
 const Filter = () => {
   const { value, setValue } = useFunnelContext()
@@ -41,13 +41,20 @@ const Filter = () => {
     }))
   }, [optionChecks])
 
+  const checkboxStyles = {
+    color: '#40B4E2',
+    '&.Mui-checked': {
+      color: '#40B4E2',
+    },
+  };
+
   return (
     <Card
       sx={{
         padding: 2,
-        width: "300px",
+        width: "338px",
         top: 70,
-        height: "83vh",
+        height: "500px",
         position: "sticky",
         marginLeft: "60px",
         backgroundColor: "#EAEBED",
@@ -61,9 +68,8 @@ const Filter = () => {
           <FormControlLabel
             key={config}
             control={
-
               <Checkbox
-                sx={{ color: '#40B4E2' }}
+                sx={checkboxStyles}
                 checked={configChecks[config]}
                 onChange={handleConfigChange}
                 name={config}
@@ -83,6 +89,7 @@ const Filter = () => {
             key={option.name}
             control={
               <Checkbox
+                sx={checkboxStyles}
                 checked={optionChecks[option.name]}
                 onChange={handleOptionChange}
                 name={option.name}

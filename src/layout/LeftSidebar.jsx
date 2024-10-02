@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Card, Tabs, Tab } from '@mui/material';
-import { useFunnelContext } from '../context/funnelContext';
+import { useFunnelContext } from '../context/FunnelContext';
 
 const LeftSidebar = () => {
   const { value, setValue } = useFunnelContext()
@@ -15,7 +15,7 @@ const LeftSidebar = () => {
     <Card
       sx={{
         height: '35vh',
-        width: 250,
+        width: '330px',
         boxShadow: 3,
         position: 'sticky',
         top: 70,
@@ -30,7 +30,6 @@ const LeftSidebar = () => {
         value={value.sliderFunnel}
         onChange={handleChange}
         sx={{
-          minWidth: 200,
           textAlign: 'left',
           '& .MuiTab-root': {
             textAlign: 'left',
@@ -44,6 +43,9 @@ const LeftSidebar = () => {
             width: '3px',
             left: 0,
           },
+          fontSize: '14px',
+          fontWeight: 400,
+          lineHeight: '20px'
         }}
       >
         <Tab label="FUNNEL INFORMATION" />
