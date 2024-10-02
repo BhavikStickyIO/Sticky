@@ -7,9 +7,9 @@ const Layout = ({ children }) => {
   return (
     <>
       <Box sx={{ display: "flex" }}>
-        <LeftSidebar />
-        {children}
-        <Filter />
+          <LeftSidebar />
+          {children}
+          <Filter />
       </Box>
     </>
   );
