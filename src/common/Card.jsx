@@ -7,10 +7,9 @@ const CustomCard = ({ title, children, subTitle = "" }) => {
     <Card
       sx={{
         maxWidth: 600,
-        margin: '20px auto',
         boxShadow: 3,
         borderRadius: 3,
-        padding: 2,
+        padding: 2
       }}
     >
       <CardSectionHeader title={title} subTitle={subTitle} marginLeft='1rem' />

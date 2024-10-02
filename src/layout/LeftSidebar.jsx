@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
 import { Card, Tabs, Tab } from '@mui/material';
-import { useFunnelContext } from '../context/funnelContext';
+import { useFunnelContext } from '../context/FunnelContext';
 
 const LeftSidebar = () => {
- const {value, setValue} = useFunnelContext()
- const handleChange = (event, newValue) => {
-  setValue(newValue);
-};
+  const { value, setValue } = useFunnelContext()
+  const handleChange = (event, newValue) => {
+    setValue((prev) => ({
+      ...prev,
+      sliderFunnel: newValue
+    }));
+  };
 
   return (
     <Card
       sx={{
         height: '35vh',
-        width: 250,
+        width: '330px',
         boxShadow: 3,
         position: 'sticky',
         top: 70,
@@ -24,10 +27,9 @@ const LeftSidebar = () => {
       <Tabs
         orientation="vertical"
         aria-label="Vertical tabs example"
-        value={value}
+        value={value.sliderFunnel}
         onChange={handleChange}
         sx={{
-          minWidth: 200,
           textAlign: 'left',
           '& .MuiTab-root': {
             textAlign: 'left',
@@ -39,7 +41,11 @@ const LeftSidebar = () => {
           '& .MuiTabs-indicator': {
             backgroundColor: '#40B4E2',
             width: '3px',
-            left: 0,           },
+            left: 0,
+          },
+          fontSize: '14px',
+          fontWeight: 400,
+          lineHeight: '20px'
         }}
       >
         <Tab label="FUNNEL INFORMATION" />
