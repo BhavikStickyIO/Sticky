@@ -7,43 +7,34 @@ import {
   SwitchToggle,
 } from "../../common";
 import Typography from "@mui/material/Typography";
-import { useTheme } from "@mui/material/styles";
 import Divider from "@mui/material/Divider";
 import { Box } from "@mui/material";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
+import { GENERAL_INFORMATION } from "../../constant/funnel";
+import { useFunnelContext } from "../../context/FunnelContext";
 
 const FunnelInformation = () => {
-  const theme = useTheme();
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
-
-  const [age, setAge] = React.useState("");
-
+  const { handlePrimaryDropdown, dropdownValues } = useFunnelContext();
+  console.log(dropdownValues, 'dropdownValues')
   return (
     <>
       <CustomCard title="Funnel Information" subTitle="General Information">
         <InputField label="Name" />
         <InputField label="Description" rows={4} />
-        <DropDown label="Default Channel" />
-        <DropDown label="Expense Assumption Profile" />
+        <DropDown
+          name="default_channel"
+          handleChange={handlePrimaryDropdown}
+          value={dropdownValues?.default_channel}
+          label="Default Channel"
+          options={GENERAL_INFORMATION.default_channel}
+        />
+        <DropDown name="expense_assumption_profile" label="Expense Assumption Profile" />
         <InputField label="Daily Subscription Limit" />
-        <DropDown label="Max Grace Period" />
+        <DropDown name="" label="Max Grace Period" />
         <Divider sx={{ margin: "20px" }} />
         <CardSectionHeader subTitle="Shopify Configuration" />
-        <DropDown label="Sticky Checkout Domain" />
-        <DropDown label="Traffic Source" />
+        <DropDown name="" label="Sticky Checkout Domain" />
+        <DropDown name="" label="Traffic Source" />
         <InputField label="Shopify Store URL" />
         <InputField label="Store Name" />
         <InputField label="Shopify API Token" />
@@ -92,7 +83,7 @@ const FunnelInformation = () => {
         </Box>
         <Divider sx={{ margin: "20px" }} />
         <CardSectionHeader subTitle="Offer Configuration" />
-        <DropDown label="Select Offer" />
+        <DropDown name="" label="Select Offer" />
       </CustomCard>
     </>
   );

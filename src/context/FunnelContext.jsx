@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState } from "react";
 
 const FunnelContext = createContext();
 const FunnelCheckBoxContext = createContext();
@@ -10,23 +10,39 @@ export const useFunnelContext = () => {
 export const FunnelProvider = ({ children }) => {
   const [value, setValue] = useState({
     checkBoxFunnel: {
-      payment_Routing_Include_Tax: false,
-      post_Back_URL: false,
-      include_Returns: false,
+      payment_routing_include_tax: false,
+      post_back_url: false,
+      include_returns: false,
       coupons: false,
-      third_Party_Providers: false,
-      block_Pre_Paid_Cards: false,
-      bIN_Blocking: false,
-      allow_Custom_Pricing: false,
-      daily_Subscription_Limit: false,
+      third_party_providers: false,
+      block_pre_paid_cards: false,
+      bin_blocking: false,
+      allow_custom_pricing: false,
+      daily_subscription_limit: false,
       collections: false,
       others: false,
     },
-    sliderFunnel: 0
+    sliderFunnel: 0,
   });
 
+  const [dropdownValues, setDropdownValues] = useState({
+    default_channel: "",
+    expense_assumption_profile: "",
+    max_grace_period: "",
+    shipping_methods: ""
+  });
+
+  console.log(dropdownValues, "dropdownValues");
+
+  const handlePrimaryDropdown = (e) => {
+    const { name, value } = e.target;
+    setDropdownValues({ ...dropdownValues, [name]: value });
+  };
+
   return (
-    <FunnelContext.Provider value={{ value, setValue }}>
+    <FunnelContext.Provider
+      value={{ value, setValue, handlePrimaryDropdown, dropdownValues }}
+    >
       {children}
     </FunnelContext.Provider>
   );
