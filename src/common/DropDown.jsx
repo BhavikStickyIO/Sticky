@@ -10,8 +10,9 @@ const DropDown = ({
   name = "",
   handleChange = () => {},
   value = "",
-  isChipShow = false
+  isChipShow = false,
 }) => {
+  console.log("My Op",value)
   return (
     <div>
       <FormControl sx={{ m: 1, width: 500, marginTop: "15px" }}>

@@ -10,12 +10,16 @@ import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import { Box } from "@mui/material";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import { GENERAL_INFORMATION } from "../../constant/funnel";
+import {
+  GENERAL_INFORMATION,
+  SHOPIFY_CONFIG,
+  OFFER_CONFIG,
+} from "../../constant/funnel";
 import { useFunnelContext } from "../../context/FunnelContext";
 
 const FunnelInformation = () => {
   const { handlePrimaryDropdown, dropdownValues } = useFunnelContext();
-  console.log(dropdownValues, 'dropdownValues')
+  console.log(dropdownValues, "dropdownValues");
   return (
     <>
       <CustomCard title="Funnel Information" subTitle="General Information">
@@ -28,13 +32,37 @@ const FunnelInformation = () => {
           label="Default Channel"
           options={GENERAL_INFORMATION.default_channel}
         />
-        <DropDown name="expense_assumption_profile" label="Expense Assumption Profile" />
+        <DropDown
+          name="expense_assumption_profile"
+          options={GENERAL_INFORMATION.expense_assumption_profile}
+          value={dropdownValues?.expense_assumption_profile}
+          handleChange={handlePrimaryDropdown}
+          label="Expense Assumption Profile"
+        />
         <InputField label="Daily Subscription Limit" />
-        <DropDown name="" label="Max Grace Period" />
+        <DropDown
+          name="max_grace_period"
+          label="Max Grace Period"
+          options={GENERAL_INFORMATION.max_grace_period}
+          value={dropdownValues?.max_grace_period}
+          handleChange={handlePrimaryDropdown}
+        />
         <Divider sx={{ margin: "20px" }} />
         <CardSectionHeader subTitle="Shopify Configuration" />
-        <DropDown name="" label="Sticky Checkout Domain" />
-        <DropDown name="" label="Traffic Source" />
+        <DropDown
+          name="sticky_checkout_domain"
+          options={SHOPIFY_CONFIG.sticky_checkout_domain}
+          label="Sticky Checkout Domain"
+          value={dropdownValues?.sticky_checkout_domain}
+          handleChange={handlePrimaryDropdown}
+        />
+        <DropDown
+          name="traffic_source"
+          label="Traffic Source"
+          options={SHOPIFY_CONFIG.traffic_source}
+          value={dropdownValues?.traffic_source}
+          handleChange={handlePrimaryDropdown}
+        />
         <InputField label="Shopify Store URL" />
         <InputField label="Store Name" />
         <InputField label="Shopify API Token" />
@@ -83,7 +111,13 @@ const FunnelInformation = () => {
         </Box>
         <Divider sx={{ margin: "20px" }} />
         <CardSectionHeader subTitle="Offer Configuration" />
-        <DropDown name="" label="Select Offer" />
+        <DropDown
+          name="select_offer"
+          label="Select Offer"
+          value={dropdownValues?.select_offer}
+          options={OFFER_CONFIG.select_offer}
+          handleChange={handlePrimaryDropdown}
+        />
       </CustomCard>
     </>
   );

@@ -25,6 +25,7 @@ export const FunnelProvider = ({ children }) => {
     sliderFunnel: 0,
   });
 
+  console.log("Val",value)
   const [dropdownValues, setDropdownValues] = useState({
     default_channel: "",
     expense_assumption_profile: "",

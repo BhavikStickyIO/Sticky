@@ -1,9 +1,19 @@
 import React, { useState } from "react";
-import { Select, MenuItem, Chip, FormControl, InputLabel } from "@mui/material";
+import {
+  Select,
+  MenuItem,
+  Chip,
+  FormControl,
+  InputLabel,
+  Icon,
+  Box,
+} from "@mui/material";
+import { DeleteForever } from "@mui/icons-material";
 
 const SecondaryDropdown = ({
-  label,
-  isMulti = false,
+  label = "",
+  name = "",
+  // handleChange = () => {},
   options = [],
   isShipping,
   isPayment,
@@ -11,21 +21,10 @@ const SecondaryDropdown = ({
   const [selectedOption, setSelectedOptions] = useState([]);
   console.log(selectedOption, "selectedOptuon");
 
-  
-
   const handleChange = (event) => {
     setSelectedOptions(event.target.value);
-    setSelectedOptions([value]); // Single select stores as array with one value
+    setSelectedOptions([value]);
   };
-
-  const handleClear = (optionToDelete) => {
-    setSelectedOptions((prevSelected) =>
-      prevSelected.filter((option) => option !== optionToDelete)
-    );
-  };
-
-  // Determine options based on the type (shipping or payment)
-  const currentOptions = isShipping ? shippingOptions : options;
 
   return (
     <div>
@@ -37,7 +36,6 @@ const SecondaryDropdown = ({
           onChange={handleChange}
           label={label}
         >
-          {/* Conditionally rendering shipping or payment options */}
           {isShipping &&
             shippingOptions.map((option) => (
               <MenuItem key={option.value} value={option.value}>
@@ -48,7 +46,10 @@ const SecondaryDropdown = ({
           {isPayment &&
             options.map((option) => (
               <MenuItem key={option.value} value={option.value}>
-                {option.label}
+                <Box display="flex" alignItems="center" gap={1}>
+                  {option.icon && <img src={option.icon}/>}
+                  {option.label}
+                </Box>
               </MenuItem>
             ))}
         </Select>
@@ -57,12 +58,12 @@ const SecondaryDropdown = ({
         <>
           {selectedOption?.map((chipTitle) => (
             <Chip
-              label={chipTitle}
+              label={chipTitle} 
               onDelete={() => {}}
               sx={{
                 backgroundColor: "#E0F7FA",
                 borderRadius: "0px",
-                marginRight: "50px",
+                marginRight: "10px",
               }}
             />
           ))}
