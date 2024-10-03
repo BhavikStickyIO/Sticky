@@ -66,8 +66,8 @@ export const FunnelForm = () => {
           Cancel
         </Button>
         <Button
-          sx={{ width: '250px', height: '47px', borderRadius: '4px' }}
-          variant="contained" color="primary">
+          sx={{ width: '250px', height: '47px', borderRadius: '4px' ,backgroundColor:'#1B3E6F' }}
+          variant="contained">
           Save
         </Button>
       </Box>
