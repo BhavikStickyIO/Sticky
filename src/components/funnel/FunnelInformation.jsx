@@ -77,7 +77,7 @@ const FunnelInformation = () => {
 
       <Box
         sx={{
-          position: "relative", // Allow positioning of child elements
+          position: "relative",
           backgroundColor: "#E3E7ED",
           display: "flex",
           justifyContent: "space-between",

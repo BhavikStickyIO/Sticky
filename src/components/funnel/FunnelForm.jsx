@@ -7,6 +7,7 @@ import PostbackProfileInformation from "../postbackprofile/PostbackProfileInform
 import { useFunnelContext } from "../../context/FunnelContext";
 import { Box, Button } from "@mui/material";
 import PaymentInformation from "../payments/PaymentInformation";
+import CouponInformation from "../coupon/CouponInformation"
 
 export const FunnelForm = () => {
   const { value } = useFunnelContext();
@@ -61,6 +62,7 @@ export const FunnelForm = () => {
         <BinblockingInformation />
       )}
       <PostbackProfileInformation />
+      <CouponInformation/>
       <Box display="flex" justifyContent="flex-end" spacing={2}>
         <Button variant="outlined" color="error" sx={{ marginRight: 2 }}>
           Cancel
