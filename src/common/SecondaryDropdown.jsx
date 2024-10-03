@@ -1,19 +1,9 @@
 import React, { useState } from "react";
-import {
-  Select,
-  MenuItem,
-  Chip,
-  FormControl,
-  InputLabel,
-  Icon,
-  Box,
-} from "@mui/material";
-import { DeleteForever } from "@mui/icons-material";
+import { Select, MenuItem, Chip, FormControl, InputLabel } from "@mui/material";
 
 const SecondaryDropdown = ({
-  label = "",
-  name = "",
-  // handleChange = () => {},
+  label,
+  isMulti = false,
   options = [],
   isShipping,
   isPayment,
@@ -21,11 +11,21 @@ const SecondaryDropdown = ({
   const [selectedOption, setSelectedOptions] = useState([]);
   console.log(selectedOption, "selectedOptuon");
 
+
   const handleChange = (event) => {
     setSelectedOptions(event.target.value);
-    setSelectedOptions([value]);
+    setSelectedOptions([value]); 
   };
 
+  const handleClear = (optionToDelete) => {
+    setSelectedOptions((prevSelected) =>
+      prevSelected.filter((option) => option !== optionToDelete)
+    );
+  };
+
+  const currentOptions = isShipping ? shippingOptions : options;
+
+  
   return (
     <div>
       <FormControl fullWidth variant="outlined" margin="normal">
@@ -46,10 +46,7 @@ const SecondaryDropdown = ({
           {isPayment &&
             options.map((option) => (
               <MenuItem key={option.value} value={option.value}>
-                <Box display="flex" alignItems="center" gap={1}>
-                  {option.icon && <img src={option.icon}/>}
-                  {option.label}
-                </Box>
+                {option.label}
               </MenuItem>
             ))}
         </Select>
@@ -58,8 +55,8 @@ const SecondaryDropdown = ({
         <>
           {selectedOption?.map((chipTitle) => (
             <Chip
-              label={chipTitle} 
-              onDelete={() => {}}
+              label={chipTitle}
+              onDelete={() => handleClear(chipTitle)}
               sx={{
                 backgroundColor: "#E0F7FA",
                 borderRadius: "0px",

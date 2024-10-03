@@ -10,9 +10,12 @@ const DropDown = ({
   name = "",
   handleChange = () => {},
   value = "",
-  isChipShow = false,
+  isChipShow = false
 }) => {
-  console.log("My Op",value)
+
+  const handleClose = () => {
+    handleChange({ target: { name, value: "" } });
+  };
   return (
     <div>
       <FormControl sx={{ m: 1, width: 500, marginTop: "15px" }}>
@@ -37,7 +40,7 @@ const DropDown = ({
       {isChipShow && value && (
         <Chip
           label={value}
-          onDelete={() => {}}
+          onDelete={handleClose}
           sx={{
             backgroundColor: "#E0F7FA",
             borderRadius: "0px",

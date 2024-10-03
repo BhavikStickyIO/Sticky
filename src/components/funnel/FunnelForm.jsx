@@ -12,21 +12,30 @@ export const FunnelForm = () => {
   const { value } = useFunnelContext();
   const shippingInfoRef = useRef();
   const paymentInfoRef = useRef();
+  const thirdPartyProvider = useRef();
 
   useEffect(() => {
     if (value.sliderFunnel === 0) {
       window.scrollTo({ top: 0, behavior: "smooth" });
-    } else if(value.sliderFunnel === 2) {
-      const offset = 20; // Change this value to adjust the space between the two forms
+    } else if (value.sliderFunnel === 2) {
+      const offset = 20;
       const top =
         shippingInfoRef?.current?.getBoundingClientRect().top +
         window.scrollY -
         offset;
       window.scrollTo({ top, behavior: "smooth" });
-    } else if(value.sliderFunnel === 1) {
-      const offset = 20; // Change this value to adjust the space between the two forms
+    } else if (value.sliderFunnel === 1) {
+      const offset = 20;
       const top =
-      paymentInfoRef?.current?.getBoundingClientRect().top +
+        paymentInfoRef?.current?.getBoundingClientRect().top +
+        window.scrollY -
+        offset;
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+    else if (value.sliderFunnel === 3) {
+      const offset = 20;
+      const top =
+        thirdPartyProvider?.current?.getBoundingClientRect().top +
         window.scrollY -
         offset;
       window.scrollTo({ top, behavior: "smooth" });
@@ -42,14 +51,26 @@ export const FunnelForm = () => {
       <div ref={shippingInfoRef}>
         <ShippingInformation />
       </div>
-      {value && value?.checkBoxFunnel?.third_party_providers && (
-        <ThirdpartyInformation />
-      )}
-      {value && value?.checkBoxFunnel?.bin_blocking && (
+      <div ref={thirdPartyProvider}>
+        {value && value?.checkBoxFunnel?.third_Party_Providers && (
+          <ThirdpartyInformation />
+        )}
+      </div>
+
+      {value && value?.checkBoxFunnel?.bIN_Blocking && (
         <BinblockingInformation />
       )}
       <PostbackProfileInformation />
-      <Button>Save</Button>
+      <Box display="flex" justifyContent="flex-end" spacing={2}>
+        <Button variant="outlined" color="error" sx={{ marginRight: 2 }}>
+          Cancel
+        </Button>
+        <Button
+          sx={{ width: '250px', height: '47px', borderRadius: '4px' ,backgroundColor:'#1B3E6F' }}
+          variant="contained">
+          Save
+        </Button>
+      </Box>
     </Box>
   );
 };
