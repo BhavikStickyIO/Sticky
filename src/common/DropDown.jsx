@@ -10,12 +10,12 @@ const DropDown = ({
   name = "",
   handleChange = () => {},
   value = "",
-  isChipShow = false
+  isChipShow = false,
 }) => {
-
   const handleClose = () => {
     handleChange({ target: { name, value: "" } });
   };
+  console.log("My val", options);
   return (
     <div>
       <FormControl sx={{ m: 1, width: 500, marginTop: "15px" }}>

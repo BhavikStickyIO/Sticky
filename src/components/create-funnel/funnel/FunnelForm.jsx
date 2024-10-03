@@ -4,9 +4,9 @@ import ShippingInformation from "../shipping/ShipingInformation";
 import ThirdpartyInformation from "../thirdpartyprovider/ThirdpartyInformation";
 import BinblockingInformation from "../binblocking/BinblockingInformation";
 import PostbackProfileInformation from "../postbackprofile/PostbackProfileInformation";
-import { useFunnelContext } from "../../context/FunnelContext";
 import { Box, Button } from "@mui/material";
 import PaymentInformation from "../payments/PaymentInformation";
+import { useFunnelContext } from "../../../context/FunnelContext";
 
 export const FunnelForm = () => {
   const { value } = useFunnelContext();
@@ -31,8 +31,7 @@ export const FunnelForm = () => {
         window.scrollY -
         offset;
       window.scrollTo({ top, behavior: "smooth" });
-    }
-    else if (value.sliderFunnel === 3) {
+    } else if (value.sliderFunnel === 3) {
       const offset = 20;
       const top =
         thirdPartyProvider?.current?.getBoundingClientRect().top +
@@ -66,8 +65,14 @@ export const FunnelForm = () => {
           Cancel
         </Button>
         <Button
-          sx={{ width: '250px', height: '47px', borderRadius: '4px' }}
-          variant="contained" color="primary">
+          sx={{
+            width: "250px",
+            height: "47px",
+            borderRadius: "4px",
+            backgroundColor: "#1B3E6F",
+          }}
+          variant="contained"
+        >
           Save
         </Button>
       </Box>

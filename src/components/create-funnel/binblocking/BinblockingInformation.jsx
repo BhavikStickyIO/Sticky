@@ -1,5 +1,5 @@
-import React from 'react';
-import { CustomCard, DropDown } from '../../common';
+import React from "react";
+import { CustomCard, DropDown } from "../../../common";
 
 const BinBlockingInformation = () => {
   const binProfileOptions = [

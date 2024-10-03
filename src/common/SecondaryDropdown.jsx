@@ -11,10 +11,9 @@ const SecondaryDropdown = ({
   const [selectedOption, setSelectedOptions] = useState([]);
   console.log(selectedOption, "selectedOptuon");
 
-
   const handleChange = (event) => {
     setSelectedOptions(event.target.value);
-    setSelectedOptions([value]); 
+    setSelectedOptions([value]);
   };
 
   const handleClear = (optionToDelete) => {
@@ -25,7 +24,6 @@ const SecondaryDropdown = ({
 
   const currentOptions = isShipping ? shippingOptions : options;
 
-  
   return (
     <div>
       <FormControl fullWidth variant="outlined" margin="normal">
@@ -46,6 +44,13 @@ const SecondaryDropdown = ({
           {isPayment &&
             options.map((option) => (
               <MenuItem key={option.value} value={option.value}>
+                {option.icon && (
+                  <img
+                    src={option.icon}
+                    alt={option.label}
+                    style={{ marginRight: "10px" }}
+                  />
+                )}
                 {option.label}
               </MenuItem>
             ))}
