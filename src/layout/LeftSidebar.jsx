@@ -5,6 +5,7 @@ import { useFunnelContext } from '../context/FunnelContext';
 const LeftSidebar = () => {
   const { value, setValue } = useFunnelContext()
   const handleChange = (event, newValue) => {
+    console.log('newValue', newValue)
     setValue((prev) => ({
       ...prev,
       sliderFunnel: newValue

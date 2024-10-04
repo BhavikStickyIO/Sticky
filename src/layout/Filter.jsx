@@ -11,7 +11,7 @@ import { CONFIGURATIONS, OPTIONS } from "../constant/funnel";
 import { useFunnelContext } from "../context/FunnelContext";
 
 const Filter = () => {
-  const { value, setValue } = useFunnelContext()
+  const { setValue } = useFunnelContext()
   const [configChecks, setConfigChecks] = useState(
     CONFIGURATIONS.reduce((acc, config) => ({ ...acc, [config]: true }), {})
   );
@@ -36,10 +36,11 @@ const Filter = () => {
       ...prev,
       checkBoxFunnel: {
         ...prev.checkBoxFunnel,
+        ...configChecks,
         ...optionChecks
       }
     }))
-  }, [optionChecks])
+  }, [optionChecks, configChecks])
 
   const checkboxStyles = {
     color: '#40B4E2',
@@ -54,7 +55,7 @@ const Filter = () => {
         padding: 2,
         width: "338px",
         top: 70,
-        height: "500px",
+        height: "550px",
         position: "sticky",
         marginLeft: "60px",
         backgroundColor: "#EAEBED",
@@ -66,18 +67,19 @@ const Filter = () => {
       <FormGroup>
         {CONFIGURATIONS.map((config) => (
           <FormControlLabel
-            key={config}
+            key={config.name}
             control={
               <Checkbox
                 sx={checkboxStyles}
-                checked={configChecks[config]}
+                checked={configChecks[config.name]}
                 onChange={handleConfigChange}
-                name={config}
+                name={config.name}
               />
             }
-            label={config}
+            label={config.label}
           />
         ))}
+
       </FormGroup>
 
       <Typography variant="h6" sx={{ mt: 2 }}>

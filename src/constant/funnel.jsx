@@ -1,8 +1,8 @@
 export const CONFIGURATIONS = [
-  "Payment Routing Include Tax",
-  "Post Back URL",
-  "Include Returns",
-  "Coupons",
+  { label: "Payment Routing Include Tax", name: "paymentRoutingIncludeTax" },
+  { label: "Post Back URL", name: "postBackURL" },
+  { label: "Include Returns", name: "include_returns" },
+  { label: "Coupons", name: "coupons" },
 ];
 
 export const OPTIONS = [
@@ -64,23 +64,29 @@ export const SHIPPING_INFORMATION = {
 };
 
 export const couponList = [
-  { value: 24, label: '(24) Coupon Shipping Free' },
-  { value: 23, label: '(23) SU-Product-Coupon (expired)' },
-  { value: 22, label: '(22) SU-Order-Coupon (expired)' },
-  { value: 21, label: '(21) Product Level - pprod' },
-  { value: 20, label: '(20) Shipping Level - ship' },
-  { value: 19, label: '(19) Product Level' },
-  { value: 18, label: '(18) Order Level - ord' },
-  { value: 17, label: '(17) bogo' },
-  { value: 16, label: '(16) B2G1' },
-  { value: 11, label: '(11) 10off' },
-  { value: 9, label: '(9) 5off' },
-  { value: 8, label: '(8) 5off' },
-  { value: 7, label: '(7) 5off' },
-  { value: 6, label: '(6) Fifty Off' },
-  { value: 5, label: '(5) 50 Off' },
-  { value: 4, label: '(4) Product Coupon Lifetime' },
-  { value: 3, label: '(3) Product Coupon Limited' },
-  { value: 2, label: '(2) Order Coupon Lifetime' },
-  { value: 1, label: '(1) Order Coupon Limited' }
+  { value: '(24) Coupon Shipping Free', label: '(24) Coupon Shipping Free' },
+  { value: '(23) SU-Product-Coupon (expired)', label: '(23) SU-Product-Coupon (expired)' },
+  { value: '(22) SU-Order-Coupon (expired)', label: '(22) SU-Order-Coupon (expired)' },
+  { value: '(21) Product Level - pprod', label: '(21) Product Level - pprod' },
+  { value: '(20) Shipping Level - ship', label: '(20) Shipping Level - ship' },
+  { value: '(19) Product Level', label: '(19) Product Level' },
+  { value: '(18) Order Level - ord', label: '(18) Order Level - ord' },
+  { value: '(17) bogo', label: '(17) bogo' },
+  { value: '(16) B2G1', label: '(16) B2G1' },
+  { value: '(10) 10off', label: '(10) 10off' },
+  { value: '(5) 5off', label: '(5) 5off' },
+  { value: '(5) 5off', label: '(5) 5off' },
+  { value: '(5) 5off', label: '(5) 5off' },
+  { value: '(50) Fifty Off', label: '(50) Fifty Off' },
+  { value: '(50) 50 Off', label: '(50) 50 Off' },
+  { value: '(4) Product Coupon Lifetime', label: '(4) Product Coupon Lifetime' },
+  { value: '(3) Product Coupon Limited', label: '(3) Product Coupon Limited' },
+  { value: '(2) Order Coupon Lifetime', label: '(2) Order Coupon Lifetime' },
+  { value: '(1) Order Coupon Limited', label: '(1) Order Coupon Limited' }
 ];
+
+export const ReturnList = [
+  { value: 'Include Returns', label: 'Include Returns' },
+  { value: 'Include Returns2', label: 'Include Returns2' },
+];
+

@@ -1,5 +1,5 @@
 import React from "react";
-import { Chip, FormControl } from "@mui/material";
+import { Box, Chip, FormControl } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
@@ -8,17 +8,19 @@ const DropDown = ({
   label = "",
   options = [],
   name = "",
-  handleChange = () => {},
+  handleChange = () => { },
   value = "",
-  isChipShow = false
+  isChipShow = false,
+  MenuProps,
+  multiple
 }) => {
 
   const handleClose = () => {
     handleChange({ target: { name, value: "" } });
   };
   return (
-    <div>
-      <FormControl sx={{ m: 1, width: 500, marginTop: "15px" }}>
+    <Box>
+      <FormControl sx={{ width: "100%",marginTop: "15px" }}>
         <InputLabel id="demo-simple-select-label">{label}</InputLabel>
         <Select
           labelId="demo-simple-select-label"
@@ -28,6 +30,8 @@ const DropDown = ({
           label={label}
           onChange={handleChange}
           sx={{ textAlign: "start" }}
+          MenuProps={MenuProps}
+          multiple={multiple} 
         >
           {options.length > 0 &&
             options.map((option) => (
@@ -38,17 +42,19 @@ const DropDown = ({
         </Select>
       </FormControl>
       {isChipShow && value && (
-        <Chip
-          label={value}
-          onDelete={handleClose}
-          sx={{
-            backgroundColor: "#E0F7FA",
-            borderRadius: "0px",
-            marginRight: "50px",
-          }}
-        />
+        <Box sx={{ mt: 2 }}>
+          <Chip
+            label={value}
+            onDelete={handleClose}
+            sx={{
+              backgroundColor: "#E0F7FA",
+              borderRadius: "0px",
+              marginRight: "50px",
+            }}
+          />
+        </Box>
       )}
-    </div>
+    </Box>
   );
 };
 

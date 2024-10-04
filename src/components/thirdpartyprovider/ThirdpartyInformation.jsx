@@ -75,7 +75,7 @@ const ThirdpartyInformation = () => {
         <div>
             <CustomCard title="Third-Party Providers">
                 {dropDownData.map((dropDown) => (
-                    <DropDown
+                    <DropDown 
                         key={dropDown.label}
                         label={dropDown.label}
                         options={dropDown.options}

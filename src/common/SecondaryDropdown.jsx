@@ -3,16 +3,19 @@ import { Select, MenuItem, Chip, FormControl, InputLabel } from "@mui/material";
 
 const SecondaryDropdown = ({
   label,
-  isMulti = false,
   options = [],
   isShipping,
   isPayment,
+  isCoupon,
+  isReturn,
+  MenuProps,
 }) => {
   const [selectedOption, setSelectedOptions] = useState([]);
-  console.log(selectedOption, "selectedOptuon");
+  console.log(options, "options");
 
 
   const handleChange = (event) => {
+    console.log('event', event)
     setSelectedOptions(event.target.value);
     setSelectedOptions([value]); 
   };
@@ -35,6 +38,7 @@ const SecondaryDropdown = ({
           value={selectedOption}
           onChange={handleChange}
           label={label}
+          MenuProps={MenuProps}
         >
           {isShipping &&
             shippingOptions.map((option) => (
@@ -43,7 +47,7 @@ const SecondaryDropdown = ({
               </MenuItem>
             ))}
 
-          {isPayment &&
+          {(isPayment || isCoupon || isReturn) &&
             options.map((option) => (
               <MenuItem key={option.value} value={option.value}>
                 {option.label}
@@ -61,6 +65,7 @@ const SecondaryDropdown = ({
                 backgroundColor: "#E0F7FA",
                 borderRadius: "0px",
                 marginRight: "10px",
+                marginBottom:"10px"
               }}
             />
           ))}

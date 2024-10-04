@@ -1,38 +1,37 @@
-import React from 'react';
-import { Box, CardContent, Chip, Grid, Typography } from '@mui/material';
-import { couponList } from '../../constant/funnel';
-import { CustomCard, DropDown, SecondaryDropdown } from '../../common';
-import { Margin } from '@mui/icons-material';
+import React from 'react'
+import { CustomCard, DropDown, SecondaryDropdown } from '../../common'
+import { CardContent, Grid, Typography } from '@mui/material'
+import { ReturnList } from '../../constant/funnel';
 
-const CouponInformation = () => {
+const IncludeReturnInformation = () => {
     return (
-        <CustomCard title="Coupon">
+        <CustomCard title="Include Returns">
             <CardContent>
                 <Grid container spacing={2} alignItems="center">
                     <Grid item xs={4}>
                         <Typography variant="body1">
-                            Coupon Profile*
+                            Returns Profile(s)*
                         </Typography>
                     </Grid>
                     <Grid item xs={8}>
                         <SecondaryDropdown
-                            label="Coupon Profile"
-                            options={couponList}
+                            label="Include Returns"
+                            options={ReturnList}
                             MenuProps={{
                                 PaperProps: {
                                     style: {
                                         maxHeight: 140,
-                                        
+
                                     },
                                 },
                             }}
-                            isCoupon={true}
-                        />                      
+                            isReturn={true}
+                        />
                     </Grid>
                 </Grid>
             </CardContent>
         </CustomCard>
-    );
-};
+    )
+}
 
-export default CouponInformation;
+export default IncludeReturnInformation

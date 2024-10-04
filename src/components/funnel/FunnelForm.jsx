@@ -7,10 +7,12 @@ import PostbackProfileInformation from "../postbackprofile/PostbackProfileInform
 import { useFunnelContext } from "../../context/FunnelContext";
 import { Box, Button } from "@mui/material";
 import PaymentInformation from "../payments/PaymentInformation";
-import CouponInformation from "../coupon/CouponInformation"
+import CouponInformation from "../coupon/CouponInformation";
+import IncludeReturnInformation from "../includeReturn/IncludeReturnInformation";
 
 export const FunnelForm = () => {
-  const { value } = useFunnelContext();
+  const { value, setValue } = useFunnelContext();
+  console.log("value", value);
   const shippingInfoRef = useRef();
   const paymentInfoRef = useRef();
   const thirdPartyProvider = useRef();
@@ -32,8 +34,7 @@ export const FunnelForm = () => {
         window.scrollY -
         offset;
       window.scrollTo({ top, behavior: "smooth" });
-    }
-    else if (value.sliderFunnel === 3) {
+    } else if (value.sliderFunnel === 3) {
       const offset = 20;
       const top =
         thirdPartyProvider?.current?.getBoundingClientRect().top +
@@ -43,8 +44,39 @@ export const FunnelForm = () => {
     }
   }, [value.sliderFunnel]);
 
+  useEffect(() => {
+    window.addEventListener("scroll", function () {
+      const offset = window.scrollY;
+      console.log("offset", offset);
+      setValue((prev) => ({
+        ...prev,
+        sliderFunnel: 0,
+      }));
+      // Example: Add/Remove a class when scrolled past a point
+      if (offset > 1500 && offset < 1900) {
+        setValue((prev) => ({
+          ...prev,
+          sliderFunnel: 1,
+        }));
+      } else if (offset > 1900 && offset < 2200) {
+        setValue((prev) => ({
+          ...prev,
+          sliderFunnel: 2,
+        }));
+      } else if (offset >= 2300) {
+        setValue((prev) => ({
+          ...prev,
+          sliderFunnel: 3,
+        }));
+      }
+    });
+  }, [window.scrollY]);
+
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", gap: 3.7 }}>
+    <Box
+      sx={{ display: "flex", flexDirection: "column", gap: 3.7 }}
+      className="funnelForm"
+    >
       <FunnelInformation />
       <div ref={paymentInfoRef}>
         <PaymentInformation />
@@ -62,14 +94,25 @@ export const FunnelForm = () => {
         <BinblockingInformation />
       )}
       <PostbackProfileInformation />
-      <CouponInformation/>
+
+      {value && value?.checkBoxFunnel?.include_returns && (
+        <IncludeReturnInformation />
+      )}
+      {value && value?.checkBoxFunnel?.coupons && <CouponInformation />}
+
       <Box display="flex" justifyContent="flex-end" spacing={2}>
         <Button variant="outlined" color="error" sx={{ marginRight: 2 }}>
           Cancel
         </Button>
         <Button
-          sx={{ width: '250px', height: '47px', borderRadius: '4px' ,backgroundColor:'#1B3E6F' }}
-          variant="contained">
+          sx={{
+            width: "250px",
+            height: "47px",
+            borderRadius: "4px",
+            backgroundColor: "#1B3E6F",
+          }}
+          variant="contained"
+        >
           Save
         </Button>
       </Box>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardContent, CardHeader, Box, Typography } from '@mui/material';
 import CardSectionHeader from './CardSectionHeader'
 
-const CustomCard = ({ title, children, subTitle = "" }) => {
+const CustomCard = ({ title, children, subTitle = ""}) => {
   return (
     <Card
       sx={{
