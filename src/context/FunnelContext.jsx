@@ -31,7 +31,7 @@ export const FunnelProvider = ({ children }) => {
     default_channel: "",
     expense_assumption_profile: "",
     max_grace_period: "",
-    shipping_methods: ""
+    shipping_methods: "",
   });
 
   console.log(dropdownValues, "dropdownValues");

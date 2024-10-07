@@ -80,7 +80,7 @@ const Filter = () => {
         ))}
       </FormGroup>
 
-      <Typography variant="h6" sx={{ mt: 2 }}>
+      <Typography variant="h6" sx={{ mt: 2 }}> 
         Options
       </Typography>
       <FormGroup>

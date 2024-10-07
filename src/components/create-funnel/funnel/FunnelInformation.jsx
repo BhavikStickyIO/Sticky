@@ -84,25 +84,6 @@ const FunnelInformation = () => {
 
         <Divider sx={{ margin: "20px" }} />
 
-        <CardSectionHeader subTitle="Shopify Configuration" />
-        <DropDown
-          name="sticky_checkout_domain"
-          options={SHOPIFY_CONFIG.sticky_checkout_domain}
-          label="Sticky Checkout Domain"
-          value={dropdownValues?.sticky_checkout_domain}
-          handleChange={handlePrimaryDropdown}
-        />
-        <DropDown
-          name="traffic_source"
-          label="Traffic Source"
-          options={SHOPIFY_CONFIG.traffic_source}
-          value={dropdownValues?.traffic_source}
-          handleChange={handlePrimaryDropdown}
-        />
-        <InputField label="Shopify Store URL" />
-        <InputField label="Store Name" />
-        <InputField label="Shopify API Token" />
-
         <Box
           sx={{
             display: "flex",

@@ -1,10 +1,12 @@
 import React from "react";
-import Maindata from "../components/edit-flow/checkout/main/maindata";
+import { EditFlow } from "../components/edit-flow/edit-flow";
 
-const EditFlow = () => {
-  return <div>
-    <Maindata/>
-  </div>;
+const Flow = () => {
+  return (
+    <>
+      <EditFlow />
+    </>
+  );
 };
 
-export default EditFlow;
+export default Flow;

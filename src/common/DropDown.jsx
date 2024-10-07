@@ -3,7 +3,6 @@ import { Chip, FormControl } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
-
 const DropDown = ({
   label = "",
   options = [],
@@ -11,14 +10,24 @@ const DropDown = ({
   handleChange = () => {},
   value = "",
   isChipShow = false,
+  marginLeft = "",
+  style = {},
 }) => {
   const handleClose = () => {
     handleChange({ target: { name, value: "" } });
   };
-  console.log("My val", options);
+  const mergedStyle = {
+    m: 1,
+    width: 500,
+    marginTop: "15px",
+    marginLeft: marginLeft,
+    textAlign: "center",
+    ...style,
+  };
+
   return (
     <div>
-      <FormControl sx={{ m: 1, width: 500, marginTop: "15px" }}>
+      <FormControl sx={mergedStyle}>
         <InputLabel id="demo-simple-select-label">{label}</InputLabel>
         <Select
           labelId="demo-simple-select-label"
@@ -27,7 +36,7 @@ const DropDown = ({
           name={name}
           label={label}
           onChange={handleChange}
-          sx={{ textAlign: "start" }}
+          sx={{ height: style.height || "auto" }}
         >
           {options.length > 0 &&
             options.map((option) => (
@@ -52,4 +61,4 @@ const DropDown = ({
   );
 };
 
-export default DropDown;
+export default DropDown; 

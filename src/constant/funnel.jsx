@@ -36,6 +36,7 @@ export const OPTIONS = [
   },
 ];
 
+//**  Add Funnel Page **
 export const GENERAL_INFORMATION = {
   default_channel: [
     { label: "Channel 1", value: "channel_1" },
@@ -156,3 +157,6 @@ export const THIRD_PARTY_PROVIDERS = {
 export const POST_BACK_PROFILES = {
   choose_profile: [{ label: "Choose Profile...", value: "Choose Profile" }],
 };
+
+
+

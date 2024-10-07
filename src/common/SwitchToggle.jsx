@@ -1,27 +1,21 @@
-import React from 'react'
-import Switch from '@mui/material/Switch';
+import React from "react";
+import Switch from "@mui/material/Switch";
 
-const SwitchToggle = () => {
-    const styles = {
-        root: {
-            height: 5000,
-            width: 200
-        },
-    };
-    const [checked, setChecked] = React.useState(true);
+const SwitchToggle = ({ style = {} }) => {
+  const [checked, setChecked] = React.useState(true);
 
-    const handleChange = (event) => {
-        setChecked(event.target.checked);
-    };
-    return (
-        <div>
-            <Switch
-                sx={{ transform: 'scale(1.5)' }}
-                checked={checked}
-                onChange={handleChange}
-                inputProps={{ 'aria-label': 'controlled' }}
-            />
-            {/* <Switch
+  const handleChange = (event) => {
+    setChecked(event.target.checked);
+  };
+  return (
+    <div>
+      <Switch
+        sx={style}
+        checked={checked}
+        onChange={handleChange}
+        inputProps={{ "aria-label": "controlled" }}
+      />
+      {/* <Switch
                 checked={checked}
                 onChange={handleChange}
                 inputProps={{ 'aria-label': 'controlled' }}
@@ -54,7 +48,7 @@ const SwitchToggle = () => {
                 }}
             /> */}
 
-            {/* <Switch
+      {/* <Switch
                 checked={checked}
                 onChange={handleChange}
                 inputProps={{ 'aria-label': 'controlled' }}
@@ -92,9 +86,8 @@ const SwitchToggle = () => {
             />
 
  */}
+    </div>
+  );
+};
 
-        </div>
-    )
-}
-
-export default SwitchToggle
+export default SwitchToggle;
