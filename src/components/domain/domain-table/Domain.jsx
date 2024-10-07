@@ -1,19 +1,16 @@
 import React from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import Paper from "@mui/material/Paper";
-import { ShopifyRows } from "../../../constant/ShopifyTable";
+import { DomainRows } from "../../../constant/DomainTable";
 import { Typography } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 
 const columns = [
-  { field: "productId", headerName: "Product ID", width: 130 },
-  { field: "variantId", headerName: "Variant ID", width: 130 },
-  { field: "offerId", headerName: "Offer ID", width: 100 },
-  { field: "crmProduct", headerName: "CRM Product", width: 130 },
-  { field: "frequencyType", headerName: "Frequency Type", width: 130 },
-  { field: "frequency", headerName: "Frequency", width: 130 },
-  { field: "quantity", headerName: "Quantity", width: 100 },
-  { field: "msrp", headerName: "MSRP", width: 100 },
+  { field: "api", headerName: "API", width: 200  },
+  { field: "apikey", headerName: "API Key", width: 200 },
+  { field: "password", headerName: "Password", width: 200},
+  { field: "created_At", headerName: "Created at", width: 200 },
+  { field: "updated_At", headerName: "Updated at", width: 200 },
   {
     field: "edit",
     headerName: "Edit",
@@ -51,11 +48,11 @@ const DataTable = () => {
           textAlign: "left",
         }}
       >
-        Shopify Products
+        Domains 
       </Typography>
-      <Paper sx={{ height: 550, width: "100%", padding: 2 }}>
+      <Paper sx={{ height: 550, width: "100%", padding: 0 }}>
         <DataGrid
-          rows={ShopifyRows}
+          rows={DomainRows}
           columns={columns}
           initialState={{ pagination: { paginationModel } }}
           pageSizeOptions={[10, 20]}

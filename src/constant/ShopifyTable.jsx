@@ -1,4 +1,4 @@
-export const rows = [
+export const ShopifyRows = [
     {
       id: 1,
       productId: '8211018776747',
