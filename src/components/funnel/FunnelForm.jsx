@@ -5,7 +5,7 @@ import ThirdpartyInformation from "../thirdpartyprovider/ThirdpartyInformation";
 import BinblockingInformation from "../binblocking/BinblockingInformation";
 import PostbackProfileInformation from "../postbackprofile/PostbackProfileInformation";
 import { useFunnelContext } from "../../context/FunnelContext";
-import { Box, Button } from "@mui/material";
+import { Box, Button, debounce } from "@mui/material";
 import PaymentInformation from "../payments/PaymentInformation";
 import CouponInformation from "../coupon/CouponInformation";
 import IncludeReturnInformation from "../includeReturn/IncludeReturnInformation";
@@ -18,59 +18,54 @@ export const FunnelForm = () => {
   const thirdPartyProvider = useRef();
 
   useEffect(() => {
-    if (value.sliderFunnel === 0) {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    } else if (value.sliderFunnel === 2) {
-      const offset = 20;
-      const top =
-        shippingInfoRef?.current?.getBoundingClientRect().top +
-        window.scrollY -
-        offset;
-      window.scrollTo({ top, behavior: "smooth" });
-    } else if (value.sliderFunnel === 1) {
-      const offset = 20;
-      const top =
-        paymentInfoRef?.current?.getBoundingClientRect().top +
-        window.scrollY -
-        offset;
-      window.scrollTo({ top, behavior: "smooth" });
-    } else if (value.sliderFunnel === 3) {
-      const offset = 20;
-      const top =
-        thirdPartyProvider?.current?.getBoundingClientRect().top +
-        window.scrollY -
-        offset;
-      window.scrollTo({ top, behavior: "smooth" });
+    if (value.clicked) {
+      const refs = {
+        0: () => window.scrollTo({ top: 0, behavior: "smooth" }),
+        1: () =>
+          window.scrollTo({
+            top:
+              paymentInfoRef.current.getBoundingClientRect().top +
+              window.scrollY -
+              20,
+            behavior: "smooth",
+          }),
+        2: () =>
+          window.scrollTo({
+            top:
+              shippingInfoRef.current.getBoundingClientRect().top +
+              window.scrollY -
+              20,
+            behavior: "smooth",
+          }),
+        3: () =>
+          window.scrollTo({
+            top:
+              thirdPartyProvider.current.getBoundingClientRect().top +
+              window.scrollY -
+              20,
+            behavior: "smooth",
+          }),
+      };
+      refs[value.sliderFunnel]?.();
+      setValue((prev) => ({ ...prev, clicked: false }));
     }
   }, [value.sliderFunnel]);
 
   useEffect(() => {
-    window.addEventListener("scroll", function () {
+    const handleScroll = () => {
       const offset = window.scrollY;
-      console.log("offset", offset);
-      setValue((prev) => ({
-        ...prev,
-        sliderFunnel: 0,
-      }));
-      // Example: Add/Remove a class when scrolled past a point
-      if (offset > 1500 && offset < 1900) {
-        setValue((prev) => ({
-          ...prev,
-          sliderFunnel: 1,
-        }));
-      } else if (offset > 1900 && offset < 2200) {
-        setValue((prev) => ({
-          ...prev,
-          sliderFunnel: 2,
-        }));
-      } else if (offset >= 2300) {
-        setValue((prev) => ({
-          ...prev,
-          sliderFunnel: 3,
-        }));
-      }
-    });
-  }, [window.scrollY]);
+      if (offset < 1500) setValue((prev) => ({ ...prev, sliderFunnel: 0 }));
+      else if (offset < 1900)
+        setValue((prev) => ({ ...prev, sliderFunnel: 1 }));
+      else if (offset < 2200)
+        setValue((prev) => ({ ...prev, sliderFunnel: 2 }));
+      else setValue((prev) => ({ ...prev, sliderFunnel: 3 }));
+    };
+
+    const debouncedScroll = debounce(handleScroll, 100);
+    window.addEventListener("scroll", debouncedScroll);
+    return () => window.removeEventListener("scroll", debouncedScroll);
+  }, []);
 
   return (
     <Box

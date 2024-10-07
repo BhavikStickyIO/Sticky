@@ -8,7 +8,8 @@ const LeftSidebar = () => {
     console.log('newValue', newValue)
     setValue((prev) => ({
       ...prev,
-      sliderFunnel: newValue
+      sliderFunnel: newValue,
+      clicked: true
     }));
   };
 
