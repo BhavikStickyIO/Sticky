@@ -4,6 +4,8 @@ import CardSectionHeader from "./CardSectionHeader";
 import DropDown from "./DropDown";
 import InputField from "./InputField";
 import SwitchToggle from "./SwitchToggle";
-import SecondaryDropdown from './SecondaryDropdown'
+import SecondaryDropdown from './SecondaryDropdown';
+import CommonDataTable from './CommonDataTable'
 
-export { Button, CustomCard, CardSectionHeader, DropDown, InputField,SwitchToggle,SecondaryDropdown }
+
+export { Button, CustomCard, CardSectionHeader, DropDown, InputField,SwitchToggle,SecondaryDropdown,CommonDataTable }

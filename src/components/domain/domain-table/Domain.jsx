@@ -1,66 +1,55 @@
 import React from "react";
-import { DataGrid } from "@mui/x-data-grid";
-import Paper from "@mui/material/Paper";
+import CommonDataTable from "../../../common/CommonDataTable";
 import { DomainRows } from "../../../constant/DomainTable";
-import { Typography } from "@mui/material";
-import EditIcon from "@mui/icons-material/Edit";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 
-const columns = [
-  { field: "api", headerName: "API", width: 200  },
-  { field: "apikey", headerName: "API Key", width: 200 },
-  { field: "password", headerName: "Password", width: 200},
-  { field: "created_At", headerName: "Created at", width: 200 },
-  { field: "updated_At", headerName: "Updated at", width: 200 },
-  {
-    field: "edit",
-    headerName: "Edit",
-    sortable: false,
-    width: 100,
-    renderCell: (params) => (
-      <EditIcon
-        color="primary"
-        onClick={() => handleEdit(params.row)}
-        style={{ cursor: "pointer" }}
-      />
-    ),
-  },
-];
 
-const handleEdit = (row) => {
-  console.log("Edit row:", row);
-};
+const Domain = () => {
 
-const DataTable = () => {
-  const paginationModel = { page: 0, pageSize: 10 };
+  const getStatusStyle = (activity) => {
+    const isNotActive = activity.includes('Not Verified'); 
+    return {
+        color: isNotActive ? '#DF4602' : '#46A850',
+        fontFamily: 'Roboto',
+        fontSize: '16px',
+        fontWeight: '600',
+        textAlign: 'left',
+    };
+  };
+  const columns = [
+    { field: "domain", headerName: "Domain", width: 250 },
+    { field: "funnel", headerName: "Funnel", width: 250 },
+    { field: "lastUpdate", headerName: "Last Update", width: 250 },
+    {
+      field: "domainVerification",
+      headerName: "Domain Verification",
+      width: 250,
+      renderCell: (params) => {
+        const style = getStatusStyle(params.value); 
+        return (
+          <div style={style}>
+            {params.value}
+          </div>
+        );
+      },
+    },
+    {
+      field: "edit",
+      headerName: "Edit",
+      sortable: false,
+      width: 100,
+    },
+  ];
 
   return (
-    <div>
-      <Typography
-        variant="h4"
-        component="h2"
-        gutterBottom
-        sx={{
-          color: "#1B3E6F",
-          fontFamily: "Roboto",
-          fontSize: "35px",
-          fontWeight: 400,
-          lineHeight: "41.02px",
-          textAlign: "left",
-        }}
-      >
-        Domains 
-      </Typography>
-      <Paper sx={{ height: 550, width: "100%", padding: 0 }}>
-        <DataGrid
-          rows={DomainRows}
-          columns={columns}
-          initialState={{ pagination: { paginationModel } }}
-          pageSizeOptions={[10, 20]}
-          disableColumnMenu
-        />
-      </Paper>
-    </div>
+    <CommonDataTable
+      title="Domains"
+      rows={DomainRows}
+      columns={columns}
+      customIcon={MoreHorizIcon}
+
+    />
   );
 };
 
-export default DataTable;
+export default Domain;
