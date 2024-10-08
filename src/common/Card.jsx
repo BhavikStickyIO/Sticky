@@ -6,15 +6,28 @@ import Divider from "../assets/divider.png";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 
-const CustomCard = ({ title, children, subTitle = "", isIcon = false }) => {
+const CustomCard = ({
+  title,
+  children,
+  subTitle = "",
+  isIcon = false,
+  style = {},
+}) => {
+  const mergedStyle = {
+    maxWidth: 600,
+    boxShadow: 3,
+    borderRadius: 3,
+    padding: 2,
+    fontSize: 16,
+    ...style,
+  };
+  console.log("Label", title);
   return (
     <>
       <Card
         sx={{
-          maxWidth: 600,
-          boxShadow: 3,
-          borderRadius: 3,
-          padding: 2,
+          ...mergedStyle,
+          height: title !== "Shopify" ? style.height : 130,
         }}
       >
         {isIcon && (
@@ -38,10 +51,9 @@ const CustomCard = ({ title, children, subTitle = "", isIcon = false }) => {
         )}
         <CardSectionHeader
           style={{
-            fontSize: 16,
-            textAlign: "center",
             fontFamily: "Roboto, Arial, sans-serif",
             fontWeight: 600,
+            // textAlign:
           }}
           title={title}
           subTitle={subTitle}

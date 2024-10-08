@@ -21,7 +21,6 @@ const DropDown = ({
     width: 500,
     marginTop: "15px",
     marginLeft: marginLeft,
-    textAlign: "center",
     ...style,
   };
 
@@ -61,4 +60,4 @@ const DropDown = ({
   );
 };
 
-export default DropDown; 
+export default DropDown;

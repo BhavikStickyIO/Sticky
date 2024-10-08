@@ -54,13 +54,17 @@ const flowList = [
 
 const EditFlowCard = () => {
   return (
-    <Box sx={{ p: 2, backgroundColor: "#EBECEE" }}>
+    <Box sx={{ p: 11, backgroundColor: "#EBECEE" }}>
       <Grid container spacing={2}>
         {" "}
         {flowList.map((item, index) => (
           <Grid item xs={3} key={index}>
             {" "}
-            <CustomCard isIcon={item.isIcon} title={item.title}>
+            <CustomCard
+              isIcon={item.isIcon}
+              title={item.title}
+              style={{ height: "305px",textAlign:"center",m:3 }}
+            >
               <img
                 src={item.icon}
                 style={{
